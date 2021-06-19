@@ -10,6 +10,12 @@ import { ChallengeBox } from '../components/ChallengeBox';
 import { CountdownProvider } from '../context/CountdownContext'
 import { ChallengesProvider } from '../context/ChallengeContexts';
 
+import dynamic from "next/dynamic";
+
+const ThemeToggle = dynamic(() => import("../components/ThemeToggle"), {
+  ssr: false,
+});
+
 interface HomeProps {
   level: number;
   currentExperience: number;
@@ -38,6 +44,7 @@ export default function Home(props: HomeProps) {
             <div>
               <ChallengeBox />
             </div>
+            <ThemeToggle />
           </section>
         </CountdownProvider>
       </div>
